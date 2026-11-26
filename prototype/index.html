@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OGWAMA One — Ogun State Solid Waste Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- FROSTED GLASS APPLE-STYLE TOP NAVIGATION -->
+  <header class="glass-nav">
+    <div class="nav-inner">
+      <a href="#overview" class="brand" id="brandHome">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="#00704A"/>
+            <path d="M9.5 16.5C9.5 12.6 12.6 9.5 18.5 9.5C18.5 15.4 15.4 18.5 11.5 18.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 19L13.5 14.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">OGWAMA <span>One</span></span>
+      </a>
+
+      <nav class="nav-segmented" id="mainNav" aria-label="Primary">
+        <button class="nav-tab active" data-view="dashboard">Overview</button>
+        <button class="nav-tab" data-view="splitpay">Split Pay</button>
+        <button class="nav-tab" data-view="licensing">
+          2027 Licensing <span class="tab-count" id="pendingBadge">3</span>
+        </button>
+        <button class="nav-tab" data-view="verify">QR Verify</button>
+        <button class="nav-tab" data-view="wards">Ward Map</button>
+      </nav>
+
+      <div class="nav-actions">
+        <span class="zero-pill">&#8358;0 Upfront to Govt</span>
+        <a class="nav-proposal-btn" href="../proposal/OGWAMA-Digital-Transformation-Proposal.html" target="_blank" rel="noopener">Proposal</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CANVAS -->
+  <main class="page-wrap" id="appContent">
+    <!-- Rendered dynamically by app.js -->
+  </main>
+
+  <!-- SUBTLE FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-inner">
+      <span>OGWAMA One &bull; Ogun State Waste Management Authority Prototype</span>
+      <span>Solid Waste Mandate &bull; Polluter Pays &bull; Self-Funded Convenience Fee Model</span>
+    </div>
+  </footer>
+
+  <!-- APPLE SHEET MODAL -->
+  <div class="sheet-backdrop hidden" id="modalBackdrop" role="dialog" aria-modal="true">
+    <div class="sheet-card">
+      <div class="sheet-header">
+        <h3 id="modalTitle">Details</h3>
+        <button class="sheet-close" id="modalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="sheet-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- FLOATING DYNAMIC-ISLAND STYLE TOAST -->
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

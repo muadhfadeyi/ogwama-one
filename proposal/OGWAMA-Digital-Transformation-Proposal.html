@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OGWAMA One — A Simpler Way Forward</title>
+  <style>
+    :root {
+      --bg: #fdfbf7;
+      --surface: #ffffff;
+      --ink: #181c2e;
+      --ink-2: #575d72;
+      --ink-3: #8a90a4;
+      --primary: #2b4eff;
+      --primary-hover: #1e3ce0;
+      --coral: #ff6b4a;
+      --peach-bg: #fff3ec;
+      --peach-border: #ffe0ce;
+      --indigo-bg: #f0f4ff;
+      --indigo-border: #d9e4ff;
+      --honey-bg: #fff9e6;
+      --honey-border: #fbebb3;
+      --blush-bg: #fdf2f8;
+      --blush-border: #f8d8ea;
+      --hairline: rgba(24, 28, 46, 0.07);
+      --radius-xl: 26px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 34px rgba(30, 41, 82, 0.055), 0 1px 2px rgba(24, 28, 46, 0.03);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* LIGHT GLASS TOP BAR */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(253, 251, 247, 0.84);
+      backdrop-filter: saturate(180%) blur(18px);
+      -webkit-backdrop-filter: saturate(180%) blur(18px);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .topbar-inner {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 13px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 16.5px;
+      letter-spacing: -0.02em;
+    }
+    .brand span { color: var(--primary); font-weight: 600; }
+    .top-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.14s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(43, 78, 255, 0.22);
+    }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-soft {
+      background: rgba(24, 28, 46, 0.06);
+      color: var(--ink);
+    }
+    .btn-soft:hover { background: rgba(24, 28, 46, 0.11); }
+    .btn-lg { padding: 13px 26px; font-size: 15px; }
+
+    /* MAIN WRAP */
+    .wrap {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 52px;
+    }
+
+    /* WELCOMING WARM HERO */
+    .hero {
+      position: relative;
+      background: linear-gradient(145deg, #fff5ee 0%, #ffffff 52%, #f0f4ff 100%);
+      border: 1px solid #f0e6dc;
+      border-radius: 32px;
+      padding: 64px 52px 54px;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 320px; height: 320px;
+      top: -120px; left: -90px;
+      background: radial-gradient(circle, rgba(255, 107, 74, 0.16), transparent 70%);
+    }
+    .hero::after {
+      width: 340px; height: 340px;
+      bottom: -140px; right: -80px;
+      background: radial-gradient(circle, rgba(43, 78, 255, 0.14), transparent 70%);
+    }
+
+    .welcome-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 1px solid #f2dfd3;
+      color: #c9472b;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 15px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 22px;
+      box-shadow: 0 2px 10px rgba(255, 107, 74, 0.08);
+    }
+    .welcome-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--coral);
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      max-width: 720px;
+      margin: 0 auto 18px;
+      color: var(--ink);
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #2b4eff, #ff6b4a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--ink-2);
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.55;
+    }
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .hero-note {
+      font-size: 13px;
+      color: var(--ink-3);
+    }
+    .editable {
+      color: var(--ink);
+      font-weight: 600;
+      border-bottom: 1px dashed rgba(43, 78, 255, 0.45);
+      padding: 0 3px;
+      cursor: text;
+    }
+
+    /* SECTION HEADERS */
+    .sec-head {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 28px;
+    }
+    .sec-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--coral);
+      margin-bottom: 6px;
+    }
+    .sec-head h2 {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .sec-head p {
+      font-size: 15.5px;
+      color: var(--ink-2);
+    }
+
+    /* 4-STEP CONNECTED STORY */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .story-card {
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+    .story-card.peach { background: var(--peach-bg); border-color: var(--peach-border); }
+    .story-card.indigo { background: var(--indigo-bg); border-color: var(--indigo-border); }
+    .story-card.honey { background: var(--honey-bg); border-color: var(--honey-border); }
+    .story-card.blush { background: var(--blush-bg); border-color: var(--blush-border); }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.88);
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .story-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .story-card p {
+      font-size: 14.5px;
+      color: var(--ink-2);
+      line-height: 1.58;
+    }
+
+    /* CONNECTED LOOP STRIP */
+    .loop-strip {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-xl);
+      padding: 22px 26px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .loop-node {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .loop-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+    }
+    .loop-arrow { color: var(--ink-3); font-weight: 700; }
+
+    /* EVERYONE WINS */
+    .win-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .win-card {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+    .win-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+    .win-card h4 {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .win-card p {
+      font-size: 13.5px;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+
+    /* ZERO COST + SIMPLE START */
+    .funding-box {
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 28px;
+      padding: 36px 38px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .funding-box h2 {
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+    }
+    .funding-box p {
+      font-size: 15px;
+      color: var(--ink-2);
+      margin-bottom: 16px;
+    }
+    .mini-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .mini-pill {
+      background: var(--indigo-bg);
+      color: var(--primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+    }
+
+    .steps-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .start-row {
+      background: #faf8f5;
+      border: 1px solid #eee7dd;
+      border-radius: 16px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .start-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .start-row strong { display: block; font-size: 14px; color: var(--ink); }
+    .start-row span { font-size: 13px; color: var(--ink-2); }
+
+    /* WARM CLOSING CTA */
+    .closing {
+      text-align: center;
+      background: linear-gradient(135deg, #fff3ec 0%, #f0f4ff 55%, #fdf2f8 100%);
+      border: 1px solid #ebe3f0;
+      border-radius: 28px;
+      padding: 44px 32px;
+    }
+    .closing h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+    .closing p {
+      font-size: 15px;
+      color: var(--ink-2);
+      max-width: 520px;
+      margin: 0 auto 22px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--ink-3);
+      padding-bottom: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .hero { padding: 44px 24px; }
+      .hero h1 { font-size: 32px; }
+      .story-grid, .win-grid, .funding-box { grid-template-columns: 1fr; }
+      .loop-strip { justify-content: center; }
+    }
+
+    @media print {
+      .topbar, .hero-cta, .closing .btn { display: none !important; }
+      body { background: #fff; }
+      .wrap { padding: 12px; gap: 24px; }
+      .hero, .story-card, .closing, .start-row, .mini-pill {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LIGHT MINIMAL NAV -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#top" class="brand">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect width="28" height="28" rx="8" fill="#2B4EFF"/>
+          <path d="M9.5 16.5C9.5 12.6 12.6 9.5 18.5 9.5C18.5 15.4 15.4 18.5 11.5 18.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9 19L13.5 14.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        OGWAMA <span>One</span>
+      </a>
+      <div class="top-actions">
+        <button class="btn btn-soft" onclick="window.print()">Save PDF</button>
+        <a class="btn btn-primary" href="../prototype/index.html">Open Live Demo &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="top">
+
+    <!-- 1. WARM WELCOMING HERO -->
+    <section class="hero">
+      <div class="welcome-pill">
+        <span class="welcome-dot"></span>
+        A Simple Digital Partner Proposal for OGWAMA
+      </div>
+      <h1>One simple system so waste collection, <em>instant PSP payouts</em>, and 2027 licensing all work together.</h1>
+      <p class="hero-sub">
+        No paper forms, no delayed PSP payments, and <strong>&#8358;0 upfront cost</strong> to the Ogun State Government.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="../prototype/index.html">Try the Live Prototype &rarr;</a>
+        <a class="btn btn-soft btn-lg" href="#how-it-works">See How It Works</a>
+      </div>
+      <div class="hero-note">
+        Prepared for <strong>Ogun State Waste Management Authority (OGWAMA)</strong> &bull;
+        Presented by <span contenteditable="true" class="editable">[Your Name / Team]</span>
+      </div>
+    </section>
+
+    <!-- 2. HOW EVERYTHING WORKS TOGETHER -->
+    <section id="how-it-works">
+      <div class="sec-head">
+        <div class="sec-kicker">How It All Connects</div>
+        <h2>Four simple pieces. One smooth flow.</h2>
+        <p>Instead of separate spreadsheets, paper PDFs, and delayed bank transfers, every part of OGWAMA talks to the next automatically.</p>
+      </div>
+
+      <div class="story-grid">
+        <div class="story-card peach">
+          <div class="step-badge">01 &bull; 2027 Online Licensing</div>
+          <h3>Operators register online &amp; get a QR pass</h3>
+          <p>
+            PSPs and &#8358;200k Waste Vendors upload their CAC, 3-year Ogun tax clearance, and truck proof online. Each political ward locks to <strong>one PSP only</strong>, and approved operators receive a scannable digital QR pass.
+          </p>
+        </div>
+
+        <div class="story-card indigo">
+          <div class="step-badge">02 &bull; Clear Digital Bills</div>
+          <h3>Factories, plazas &amp; estates get one simple bill</h3>
+          <p>
+            Every company, shop, or organised estate/CDC is linked to its exact ward PSP. Estates can count housing units right on the platform so bulk bills are fair, clear, and easy to pay online or at any bank.
+          </p>
+        </div>
+
+        <div class="story-card honey">
+          <div class="step-badge">03 &bull; Instant Split Payments</div>
+          <h3>Money splits automatically the moment it is paid</h3>
+          <p>
+            When a factory pays, <strong>60% goes straight to the PSP</strong> and <strong>40% goes straight to OGWAMA</strong> (and <strong>80% / 20%</strong> for estates). Funds never get stuck waiting for approval letters—so PSPs stay funded and trucks keep moving.
+          </p>
+        </div>
+
+        <div class="story-card blush">
+          <div class="step-badge">04 &bull; Live Oversight &amp; Clean Recycling</div>
+          <h3>3-second QR checks &amp; real-time visibility</h3>
+          <p>
+            Factory gates scan a vendor's QR pass to stop unlicensed buyers and HSE double-crossing. Residents find their ward PSP on a simple map, report missed pickups in one tap, and every OGWAMA department sees live reports automatically.
+          </p>
+        </div>
+      </div>
+
+      <div class="loop-strip" aria-label="Connected workflow summary">
+        <span class="loop-node"><i class="loop-dot" style="background:#ff6b4a"></i>Online License</span>
+        <span class="loop-arrow">&rarr;</span>
+        <span class="loop-node"><i class="loop-dot" style="background:#2b4eff"></i>Digital Bill</span>
+        <span class="loop-arrow">&rarr;</span>
+        <span class="loop-node"><i class="loop-dot" style="background:#eab308"></i>Instant 60/40 &amp; 80/20 Split</span>
+        <span class="loop-arrow">&rarr;</span>
+        <span class="loop-node"><i class="loop-dot" style="background:#ec4899"></i>QR Gate Check &amp; Live Dashboard</span>
+      </div>
+    </section>
+
+    <!-- 3. WHY EVERYONE WINS -->
+    <section>
+      <div class="sec-head">
+        <div class="sec-kicker">Made for Everyone</div>
+        <h2>Simple for the people who use it every day.</h2>
+      </div>
+
+      <div class="win-grid">
+        <div class="win-card">
+          <div class="win-icon" style="background:var(--indigo-bg)">&#127963;</div>
+          <h4>OGWAMA</h4>
+          <p>Live numbers for Finance, Operations, Commercial, Recycling &amp; PRS—with zero paper chaos and higher capture.</p>
+        </div>
+        <div class="win-card">
+          <div class="win-icon" style="background:var(--peach-bg)">&#128666;</div>
+          <h4>PSP Operators</h4>
+          <p>Get paid their 60% or 80% share in seconds, with zero overlap in their assigned political ward.</p>
+        </div>
+        <div class="win-card">
+          <div class="win-icon" style="background:var(--blush-bg)">&#9851;</div>
+          <h4>Waste Vendors</h4>
+          <p>Protected access to their assigned factories through 3-second QR verification at the gate.</p>
+        </div>
+        <div class="win-card">
+          <div class="win-icon" style="background:var(--honey-bg)">&#127968;</div>
+          <h4>Residents &amp; Estates</h4>
+          <p>Know your ward PSP, pay transparent bulk bills, and report missed pickups or illegal dumping easily.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ZERO COST + EASY START -->
+    <section class="funding-box">
+      <div>
+        <div class="sec-kicker" style="text-align:left">Zero Burden on State Budget</div>
+        <h2>Ogun State pays &#8358;0 upfront.</h2>
+        <p>
+          We build, host, and support the platform at no upfront cost to OGWAMA. It pays for itself through a small convenience fee paid at checkout—leaving <strong>100% of OGWAMA's statutory share untouched</strong>.
+        </p>
+        <div class="mini-pills">
+          <span class="mini-pill">&#8358;0 Upfront to Govt</span>
+          <span class="mini-pill">1.5%–2% Bill Convenience Fee</span>
+          <span class="mini-pill">&#8358;7,500 Online License Fee</span>
+        </div>
+      </div>
+
+      <div class="steps-stack">
+        <div class="start-row">
+          <span class="start-num">1</span>
+          <div>
+            <strong>Weeks 1–4 &bull; Go Live for 2027</strong>
+            <span>Launch online PSP &amp; Waste Vendor registration with QR passes.</span>
+          </div>
+        </div>
+        <div class="start-row">
+          <span class="start-num">2</span>
+          <div>
+            <strong>Weeks 5–8 &bull; Instant Split Pilot</strong>
+            <span>Turn on automatic 60/40 &amp; 80/20 split payments starting in Abeokuta.</span>
+          </div>
+        </div>
+        <div class="start-row">
+          <span class="start-num">3</span>
+          <div>
+            <strong>Weeks 9+ &bull; Statewide Rollout</strong>
+            <span>Expand ward maps, estate enumeration &amp; community recycling hubs across Ogun.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WARM CLOSING -->
+    <section class="closing">
+      <h2>Ready to see it working live?</h2>
+      <p>Walk through a live 60/40 split payment, approve a 2027 online license, and scan a QR pass in under 3 minutes.</p>
+      <a class="btn btn-primary btn-lg" href="../prototype/index.html">Launch OGWAMA One Prototype &rarr;</a>
+    </section>
+
+    <div class="footer">
+      OGWAMA One &bull; Ogun State Waste Management Authority Digital Partner Proposal
+    </div>
+
+  </main>
+</body>
+</html>
