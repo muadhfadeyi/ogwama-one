@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OGWAMA One — A Simpler Way Forward</title>
+  <title>OGWAMA One Proposal — Muadh Fadeyi (Team 1)</title>
   <style>
     :root {
       --bg: #fdfbf7;
@@ -435,10 +435,17 @@
     }
 
     @media print {
+      @page { margin: 12mm; }
       .topbar, .hero-cta, .closing .btn { display: none !important; }
       body { background: #fff; }
-      .wrap { padding: 12px; gap: 24px; }
-      .hero, .story-card, .closing, .start-row, .mini-pill {
+      .wrap { padding: 4px; gap: 22px; }
+      .hero { padding: 34px 30px; }
+      .hero h1 { font-size: 32px; }
+      .hero, .story-card, .win-card, .funding-box, .closing, .loop-strip {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .hero, .story-card, .closing, .start-row, .mini-pill, .win-icon, .welcome-pill {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
@@ -619,7 +626,7 @@
     </section>
 
     <div class="footer">
-      OGWAMA One &bull; Ogun State Waste Management Authority Digital Partner Proposal
+      OGWAMA One &bull; Prepared for Ogun State Waste Management Authority by <strong>Muadh Fadeyi (Team 1)</strong>
     </div>
 
   </main>

@@ -1,5 +1,8 @@
 # OGWAMA One — A Simple Digital Proposal for OGWAMA
 
+**Prepared For:** Ogun State Waste Management Authority (OGWAMA)  
+**Presented By:** Muadh Fadeyi / Team 1
+
 **One simple system so waste collection, instant PSP payouts, and 2027 online licensing all work together—at ₦0 upfront cost to Ogun State.**
 
 ---
