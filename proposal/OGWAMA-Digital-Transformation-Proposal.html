@@ -435,17 +435,45 @@
     }
 
     @media print {
-      @page { margin: 12mm; }
+      @page { size: A4; margin: 11mm; }
       .topbar, .hero-cta, .closing .btn { display: none !important; }
       body { background: #fff; }
-      .wrap { padding: 4px; gap: 22px; }
-      .hero { padding: 34px 30px; }
-      .hero h1 { font-size: 32px; }
+      .wrap { padding: 0; gap: 18px; max-width: none; }
+      .hero { padding: 28px 28px 24px; border-radius: 22px; }
+      .hero h1 { font-size: 28px; margin-bottom: 12px; }
+      .hero-sub { font-size: 14.5px; margin-bottom: 16px; }
+      .sec-head { margin-bottom: 16px; }
+      .sec-head h2 { font-size: 22px; }
+      .sec-head p { font-size: 13.5px; }
+      .story-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
+      .story-card { padding: 18px; border-radius: 18px; }
+      .story-card h3 { font-size: 16px; }
+      .story-card p { font-size: 12.8px; }
+      .loop-strip { padding: 14px 18px; margin-top: 12px; border-radius: 16px; }
+      .win-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
+      .win-card { padding: 16px; border-radius: 16px; }
+      .funding-box {
+        grid-template-columns: 1.05fr 0.95fr !important;
+        gap: 20px;
+        padding: 22px 24px;
+        border-radius: 20px;
+      }
+      .funding-box h2 { font-size: 22px; }
+      .funding-box p { font-size: 13px; }
+      .start-row { padding: 11px 14px; }
+      .start-num {
+        background: #dfe7ff !important;
+        color: #181c2e !important;
+        border: 1px solid #b9cbff;
+      }
+      .closing { padding: 24px; border-radius: 20px; }
+      .closing h2 { font-size: 21px; }
+      .closing p { font-size: 13.5px; margin-bottom: 0; }
       .hero, .story-card, .win-card, .funding-box, .closing, .loop-strip {
         break-inside: avoid;
         page-break-inside: avoid;
       }
-      .hero, .story-card, .closing, .start-row, .mini-pill, .win-icon, .welcome-pill {
+      .hero, .story-card, .closing, .start-row, .mini-pill, .win-icon, .welcome-pill, .start-num {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
