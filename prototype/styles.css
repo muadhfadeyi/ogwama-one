@@ -45,6 +45,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 .num { font-variant-numeric: tabular-nums; }
@@ -777,8 +778,163 @@ input:disabled {
 
 /* RESPONSIVE */
 @media (max-width: 920px) {
-  .nav-inner { flex-wrap: wrap; justify-content: center; }
+  .nav-inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 16px;
+    gap: 10px;
+  }
+  .nav-segmented {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+  .nav-segmented::-webkit-scrollbar { display: none; }
+  .nav-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
   .grid-3, .grid-2, .grid-split, .explainer-pair { grid-template-columns: 1fr; }
   .form-row-2, .check-list, .ward-grid { grid-template-columns: 1fr; }
   .page-hero h1 { font-size: 28px; }
+}
+
+@media (max-width: 640px) {
+  .zero-pill { display: none; }
+  .brand-text { font-size: 16px; }
+  .nav-proposal-btn { padding: 6px 12px; font-size: 12.5px; }
+  .nav-tab { padding: 7px 12px; font-size: 13px; }
+
+  .page-wrap {
+    padding: 20px 14px 56px;
+    gap: 18px;
+  }
+  .page-hero { gap: 14px; }
+  .page-hero h1 { font-size: 25px; line-height: 1.16; }
+  .page-hero p { font-size: 14.5px; margin-top: 6px; }
+  .page-hero .btn { width: 100%; }
+  .page-hero .segmented { width: 100%; }
+
+  .card, .card-tight {
+    padding: 18px 16px;
+    border-radius: 20px;
+  }
+  .card-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .card-title { font-size: 17px; }
+  .card-sub { font-size: 13px; }
+
+  .metric-tile {
+    padding: 18px 18px;
+    border-radius: 20px;
+  }
+  .metric-value { font-size: 28px; }
+
+  .caption-strip {
+    padding: 14px 16px;
+    border-radius: 18px;
+    gap: 12px;
+  }
+  .caption-strip p {
+    min-width: 0 !important;
+    font-size: 13.5px;
+  }
+  .segmented {
+    max-width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .segmented::-webkit-scrollbar { display: none; }
+  .seg-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 12.5px;
+  }
+
+  .wallet-card {
+    padding: 20px 18px;
+    border-radius: 20px;
+  }
+  .wallet-total { font-size: 30px; margin: 8px 0 14px; }
+  .wb-row {
+    font-size: 13px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .wb-row strong { font-size: 14.5px; }
+  .stepper { gap: 4px; margin-top: 16px; padding-top: 14px; }
+  .step-node { font-size: 10.5px; }
+
+  .ios-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px 12px;
+    padding: 13px 2px;
+  }
+  .ios-row > div:first-child {
+    min-width: 0;
+    flex: 1 1 200px;
+  }
+  .ios-row.clickable {
+    margin: 0 -8px;
+    padding: 12px 8px;
+  }
+  .row-title { font-size: 14px; overflow-wrap: anywhere; }
+  .row-sub { font-size: 12.5px; overflow-wrap: anywhere; }
+  .row-right { text-align: left; }
+
+  .pass-card { padding: 18px 16px; border-radius: 20px; }
+  .pass-card .ios-row { flex-direction: column; gap: 2px; }
+  .pass-card .ios-row strong { max-width: 100% !important; text-align: left !important; }
+  .pass-head {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .pass-verdict { font-size: 18px; }
+
+  .explainer-card { padding: 15px 16px; }
+  .ward-card { padding: 15px; }
+
+  /* Native iOS Bottom Sheet on mobile */
+  .sheet-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .sheet-card {
+    border-radius: 24px 24px 0 0;
+    max-height: 88vh;
+  }
+  .sheet-header { padding: 18px 18px 14px; }
+  .sheet-body { padding: 16px 18px 26px; }
+
+  .toast-stack {
+    left: 14px;
+    right: 14px;
+    transform: none;
+    bottom: 16px;
+  }
+  .toast {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    padding: 11px 16px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
+  }
 }
